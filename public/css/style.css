@@ -1,0 +1,1192 @@
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Скрывает горизонтальную прокрутку */
+}
+
+body.modal-open {
+    overflow: hidden; /* Отключает прокрутку на основной странице */
+}
+
+.modal {
+
+    overflow-y: auto; /* Позволяет прокручивать содержимое модального окна */
+    display: none; /* Скрыто по умолчанию */
+    /* Другие стили для модального окна */
+}
+
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ebeaea;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden; /* Скрывает горизонтальную прокрутку */
+    
+
+    /* background-image: url('image/fon/fon.webp');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+}
+
+
+
+.fullscreen-image {
+    display: flex; /* Используем flexbox */
+    justify-content: center; /* Центрирование по горизонтали (необязательно) */
+    align-items: center; /* Центрирование по вертикали (необязательно) */
+    width: 100vw; /* Ширина контейнера на 100% от ширины окна */
+    height: 100vh; /* Высота контейнера на 100% от высоты окна */
+    overflow: hidden; /* Скрываем переполнение */
+}
+
+.fullscreen-image img {
+    width: 100%; /* Заполняем всю ширину контейнера */
+    height: 100%; /* Заполняем всю высоту контейнера */
+    object-fit: cover; /* Сохраняем пропорции и обрезаем, чтобы заполнить контейнер */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    color: rgb(0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Header */
+
+.header {
+    padding: 50px 0;
+    width: 1400px;
+
+}
+
+header .logo {
+    text-transform: uppercase;
+    font-size: 29px;
+    font-weight: 400;
+}
+
+.img_logo {
+    width: 60px;
+}
+
+.centered-text {
+    font-weight: bold;
+    font-size: 50px;
+    padding-top: 50px;
+    text-align: center;
+    color: #002bff;
+    background-color: #fff;
+}
+
+
+/* Общий стиль для навигации */
+.head_position {
+    display: flex;
+    /* Flexbox для выравнивания элементов */
+    justify-content: center;
+    /* Центрируем по горизонтали */
+    align-items: center;
+    /* Центрируем по вертикали */
+    background-color: #f8f9fa;
+    /* Цвет фона */
+    padding: 10px 20px;
+    /* Внутренние отступы */
+}
+
+/* Убираем стандартные стили для списка */
+.head_position ul {
+    list-style: none;
+    /* Убираем маркеры */
+    display: flex;
+    /* Располагаем элементы горизонтально */
+    align-items: center;
+    /* Выравниваем элементы по вертикали */
+    padding: 0;
+    margin: 0;
+}
+
+/* Логотип */
+.head_position .logo {
+    display: flex;
+    align-items: center;
+    /* Центрируем логотип по вертикали */
+    margin: 0 20px;
+    /* Отступы слева и справа */
+}
+
+/* Изображение логотипа */
+.head_position .img_logo {
+    width: 60px;
+    /* Ширина изображения */
+    height: 80px;
+    /* Высота изображения */
+    object-fit: contain;
+    /* Сохраняем пропорции изображения */
+}
+
+/* Ссылки */
+.head_position a {
+    text-decoration: none;
+    /* Убираем подчеркивание */
+    color: #333;
+    /* Цвет текста */
+    font-size: 25px;
+    /* Размер шрифта */
+    font-weight: bold;
+    /* Жирный шрифт */
+    padding: 5px 10px;
+    /* Внутренние отступы */
+    transition: color 0.3s ease;
+    /* Плавное изменение цвета */
+}
+
+/* Ссылка при наведении */
+.head_position a:hover {
+    color: #007bff;
+    /* Синий цвет при наведении */
+}
+
+/* Ссылки с иконкой корзины */
+.head_position .shop {
+    width: 30px;
+    /* Размер иконки корзины */
+    height: 30px;
+    vertical-align: middle;
+    /* Выравнивание с текстом */
+}
+
+/* Дополнительные настройки для кнопки */
+.head_position .btn {
+    margin-left: auto;
+    /* Сдвигаем кнопку "Контакты" вправо */
+}
+
+
+/* модалка */
+/* Стили для модального окна */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.close-btn2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.shop {
+    width: 30px;
+}
+
+/* Модальное окно корзины */
+.modal {
+    display: none;
+    /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 50%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Стиль для общей суммы */
+#totalPriceContainer {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#totalPrice {
+    color: green;
+}
+
+/* Стиль для товаров в корзине */
+#cartItems {
+    margin-top: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.face_title {
+    margin-left: 50px;
+}
+
+.face_second_title {
+    margin-left: 70px;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.cart-item .product-name {
+    flex-grow: 1;
+}
+
+.cart-item .product-price {
+    font-weight: bold;
+}
+
+/* удание из корзины */
+
+.remove-item {
+    border-color: blue;
+    color: #fff;
+    box-shadow: 0 0 40px 40px blue inset, 0 0 0 0 blue;
+    transition: all 150ms ease-in-out;
+    width: 54px;
+    height: 24px;
+}
+
+/* уведомление о покупке товара */
+
+
+
+/* оформление заказа */
+.checkoutBtn {
+    width: 220px;
+    height: 35px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.checkoutBtn:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.checkoutBtn:active {
+    color: #000
+}
+
+.checkoutBtn:active:after {
+    background: transparent;
+}
+
+.checkoutBtn:hover:before {
+    opacity: 1;
+}
+
+.checkoutBtn:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+/* Container */
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container_1_container_cards {
+    display: flex;
+    justify-content: flex-start;
+    /* Размещает элементы слева */
+    gap: 20px;
+    /* Задает отступ между элементами */
+    display: flex;
+    justify-content: center;
+    /* Центрирует блок по горизонтали */
+    /* align-items: center;     Центрирует блок по вертикали */
+    margin-right: 80px;
+}
+
+
+.new-block {
+    width: 100px;
+    height: 100px;
+
+}
+
+.card_position {
+    
+    gap: 20px;
+    /* Задает отступ между элементами */
+    
+    
+    background-color: white;
+ 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+}
+
+.hero_info {
+    width: 1000px;
+    background-color: rgb(255, 255, 255);
+}
+
+.card {
+    width: 225px;
+    max-height: 350px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    position: relative;
+    transition: 0.2s;
+    margin-bottom: 80px;
+    margin-left: 20px;
+
+}
+
+.card:hover {
+    box-shadow: 4px 8px 16px rgba(255, 102, 51, 0.2);
+}
+
+.card_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.card_img>img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: 0.2s;
+}
+
+.card_img:hover>img {
+    transform: scale(1.1);
+}
+
+.card_top {
+    flex: 0 0 220px;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.card_label {
+    position: absolute;
+    bottom: 10px;
+    left: 5px;
+    padding: 4px 8px;
+    background-color: orange;
+    border-radius: 4px;
+}
+
+.card_btn {
+    flex: 1 0 auto;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+.card_price {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.card_price {
+    width: 100%;
+}
+
+.card_price::after {
+    content: "\20BD";
+}
+
+.card_price--discount {
+    font-size: 19px;
+    font-weight: 700px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+
+.card_price--discount::before {
+    content: "Со скидкой - ";
+    font-weight: 400px;
+    font-size: 13px;
+    color: black;
+}
+
+/* цена  */
+.card_price--com {
+    font-weight: 400px;
+    font-size: 17px;
+    color: black;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: flex;
+}
+.card_price--com::before {
+    content: "Цена - ";
+    font-weight: 400px;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+  
+}
+
+
+.card_price--common {
+    font-weight: 400px;
+    font-size: 17px;
+    color: black;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: flex;
+}
+
+.card_price--common::before {
+    content: "Обычная цена - ";
+    font-weight: 400px;
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+    text-decoration: line-through;
+}
+
+.card_title {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 400px;
+    font-size: 17px;
+    line-height: 1.2;
+    color: black;
+}
+
+.card_title:hover {
+    color: orange;
+}
+
+.card_btn {
+    display: block;
+    width: 100%;
+    font-weight: 400px;
+    font-size: 17px;
+    color: green;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid green;
+    border-radius: 4px;
+
+}
+
+.card_btn:hover {
+    background-color: orange;
+    color: white;
+}
+
+.container_1 {
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 15px;
+    margin: 0 auto;
+
+}
+
+
+/* Map */
+.map_position {
+    width: 100%;
+    /* Ширина контейнера на всю ширину экрана */
+    overflow: hidden;
+}
+
+.map {
+    text-align: center;
+    background-color: white;
+    width: 100%;
+}
+
+.map__title {
+    font-size: 24px;
+    color: #f38181;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 100%;
+    /* Ширина контейнера на всю ширину экрана */
+    overflow: hidden;
+    /* Скрыть любые переполнения */
+}
+
+.map__title:after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin: 15px auto 0;
+    background-color: #f38181;
+    width: 100%;
+}
+
+.map__title a {
+    color: inherit;
+    text-decoration: none;
+    width: 100%;
+}
+
+.map__title a:hover {
+    text-decoration: underline;
+    width: 100%;
+}
+
+/* footer */
+.footer {
+    padding-top: 65px;
+    background-color: #f8f8f8;
+}
+
+.footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -15px;
+    padding-bottom: 65px;
+}
+
+.footer__col {
+    padding: 0 15px;
+    margin-left: 150px;
+}
+
+.footer__col--first {
+    width: 40%;
+}
+
+.footer__col--second {
+    width: 29%;
+}
+
+.footer__col--third {
+    width: 22%;
+}
+
+.footer__logo {
+    text-decoration: none;
+    margin-bottom: 30px;
+    font-size: 46px;
+    font-weight: 700;
+    color: #ccc;
+}
+
+.footer__text {
+    margin-bottom: 30px;
+    font-size: 15px;
+    color: #999;
+}
+
+.footer__social {
+    margin-bottom: 25px;
+}
+
+.footer__social-header {
+    padding-bottom: 15px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.footer__social-header b {
+    font-size: 18px;
+}
+
+.footer__social-content {
+    padding-top: 15px;
+    font-size: 15px;
+    color: #999;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.footer__social-content a {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    font-size: 18px;
+    color: #95e1d3;
+}
+
+.footer__title {
+    margin: 30px 0;
+    font-size: 14px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+
+/* Blogs */
+.blogs__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.blogs__img {
+    width: 120px;
+    height: 80px;
+}
+
+.blogs__content {
+    padding-left: 20px;
+}
+
+.blogs__title {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 12px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.blogs__title:hover {
+    text-decoration: underline;
+}
+
+.blogs__date {
+    font-size: 13px;
+    color: #999;
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* Instagram */
+.instagram {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.instagram__item {
+    width: 33%;
+    border-bottom: 1px solid #fff;
+}
+
+.instagram__item img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Subscribe */
+.subscribe {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+}
+
+.subscribe__input {
+    width: 60%;
+    height: 40px;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #e7e7e7;
+    border-right: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.1;
+    color: #333;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.subscribe__input::placeholder {
+    color: #ccc;
+}
+
+.subscribe__input:focus {
+    outline: 0;
+    border-color: #95e1d3;
+}
+
+.subscribe__btn {
+    width: 40%;
+    height: 40px;
+    padding: 12px 30px;
+    background-color: #95e1d3;
+    border: 0;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.subscribe__btn:hover {
+    background-color: #74c7b8;
+}
+
+.subscribe__btn:focus {
+    outline: 0;
+}
+
+/* ModalWindow */
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    
+}
+
+.close-button {
+    background-color: #fff;
+    border: none;
+    outline: none;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.model-hide {
+    display: none;
+}
+
+.border-show-red {
+    border: red;
+    border: solid 1px red;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-element {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-button {
+    background-color: #74c7b8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.submit-button:hover {
+    background-color: #95e1d3;
+}
+
+/* красивое уведомление о покупке*/
+/* .notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50; 
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.5s ease;
+    opacity: 0;
+    z-index: 1000; 
+} */
+
+.notification.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal_card_inf {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+    /* Окно по умолчанию скрыто */
+}
+
+.hidden {
+    display: none !important;
+}
+
+.modal_contente {
+    text-align: center;
+    position: relative;
+}
+
+.modal_clos {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.card_more_info_btn {
+    display: block;
+    width: 100%;
+    font-size: 17px;
+    color: green;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid green;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+
+
+/* Затемнённый фон при открытии модального окна */
+.modal {
+    display: none;
+    /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Полупрозрачный тёмный фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+    /* Плавное появление */
+}
+
+/* Само модальное окно */
+.modal-content {
+    background: #fff;
+    /* Белый фон */
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    /* Закруглённые углы */
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    /* Тень */
+    transform: scale(0.7);
+    /* Начальное уменьшение */
+    animation: scaleUp 0.3s ease-in-out forwards;
+    /* Анимация увеличения */
+}
+
+/* Кнопка закрытия */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: red;
+    /* Подсветка при наведении */
+}
+
+/* Изображение в модальном окне */
+.modal-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+/* Плавное появление фона */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Плавное увеличение модального окна */
+@keyframes scaleUp {
+    from {
+        transform: scale(0.7);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .modal-image {
+        max-width: 80%;
+    }
+
+    .close-btn {
+        font-size: 20px;
+        right: 10px;
+        top: 5px;
+    }
+}
+
+
+.add_infe {
+    flex: 1 0 auto;
+    border-radius: 5px;
+    border: none;
+    color: white;
+
+}
+
+.add_infe {
+    display: block;
+    width: 100%;
+    font-weight: 400px;
+    font-size: 17px;
+    color: green;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid green;
+    border-radius: 4px;
+    margin-top: 8px;
+}
+
+.add_infe:hover {
+    background-color: orange;
+    color: white;
+}
+
+.modal-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.modal-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+
+
+
+.section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#section2 {
+    display: none;
+    /* Скрываем вторую секцию изначально */
+
+}
+
+.toggle-button {
+    display: block;
+    margin-top: 15px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+    justify-content: flex-end;
+}
+
+.toggle-button:hover {
+    background: #0056b3;
+}
+
+.toggle-button:active {
+    background: #004085;
+}
+
+.zero{
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    height: auto;
+}
+
+
+.footer1{
+    width: 100%;
+    height: 300px;
+    position: relative;
+    background-color: #fa0000;
+}
+
+.footer_t h1{
+    color: #fff;
+
+}
