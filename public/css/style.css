@@ -925,25 +925,44 @@ header .logo {
     background-color: #95e1d3;
 }
 
-/* красивое уведомление о покупке*/
-/* .notification {
+/* Стили для уведомления о добавлении в корзину */
+.notification {
     position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #4CAF50; 
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
     color: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: opacity 0.5s ease;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
     opacity: 0;
-    z-index: 1000; 
-} */
+    transform: translateY(-20px);
+    transition: opacity 0.3s, transform 0.3s;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    max-width: 300px;
+}
 
 .notification.show {
-    display: block;
     opacity: 1;
+    transform: translateY(0);
+}
+
+.notification-icon {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.notification-close {
+    margin-left: 10px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
 }
 
 .modal_card_inf {

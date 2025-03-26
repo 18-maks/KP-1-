@@ -43,8 +43,10 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        // Авторизуем пользователя
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        // Перенаправляем на страницу с сообщением о необходимости подтверждения
+        return redirect()->route('verification.notice');
     }
 }

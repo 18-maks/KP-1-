@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\CheckoutController;
 
 // уведомление о покупке
 // use App\Http\Controllers\CheckoutController;
@@ -21,6 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    // Маршрут для обработки заказа (доступен только авторизованным пользователям)
+    Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 });
 
 // уведомление о покупке

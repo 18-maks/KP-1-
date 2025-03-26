@@ -31,9 +31,13 @@
                     <li class="btn"><a href="#" class="openModal" data-title="Контакт"
                             data-content="номер: +375 (29) 250 41 05  email: maksimpavlovich90@gmail.com">Контакты</a>
                     </li>
+                    <li>
+                        <a href="{{route('dashboard')}}" id="dashboardLink">Личный кабинет</a>
+                    </li>
                     <li><a href="#" id="openCart"><img class="shop" src="image/marks/shope.png"
                                 alt="иконка корзины"></a>
                     </li>
+                   
                 </ul>
             </nav>
             <!-- Модальное окно с корзиной -->

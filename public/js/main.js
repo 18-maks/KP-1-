@@ -1,5 +1,3 @@
-
-
 function toggleModal(modal, state) {
     modal.style.display = state ? 'flex' : 'none';
     // Отключаем или включаем прокрутку на body
@@ -90,7 +88,7 @@ document.querySelectorAll('.card_btn').forEach(button => {
             image: button.getAttribute('data-image'),
         };
         cart.push(product);
-        alert(`${product.name} добавлен в корзину`);
+        showAddToCartNotification(`${product.name} добавлен в корзину`);
         updateCartUI();
     });
 });
@@ -120,13 +118,15 @@ function updateCartUI() {
 if (checkoutButton) {
     checkoutButton.addEventListener('click', () => {
         if (cart.length) {
-            sendPurchaseData('checkout.php', { cart, total: totalPriceElement.textContent });
-            alert('Ваш заказ оформлен! Спасибо за покупку.');
-            cart = [];
-            updateCartUI();
-            toggleModal(cartModal, false);
+            // Передаем данные о корзине и общей сумме на сервер
+            sendPurchaseData('checkout.php', { 
+                cart: cart, 
+                total: totalPriceElement.textContent 
+            });
+            // Не очищаем корзину сразу, а ждем ответа от сервера
+            // Закрытие модального окна происходит после успешного ответа
         } else {
-            alert('Ваша корзина пуста.');
+            showAddToCartNotification('Ваша корзина пуста.');
         }
     });
 }
@@ -162,25 +162,48 @@ window.addEventListener('click', event => {
 
 // *** Отправка данных на сервер ***
 function sendPurchaseData(url, data) {
-    fetch(url, {
+    // Получаем CSRF-токен из мета-тега
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    
+    fetch('/checkout', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken
+        },
         body: JSON.stringify(data),
     })
-        .then(response => response.text())
-        .then(result => {
-            showNotification(result);
-        })
-        .catch(error => console.error('Ошибка при отправке данных:', error));
-}
-
-function showNotification(message) {
-    const notification = document.getElementById('notification');
-    if (notification) {
-        notification.textContent = message;
-        notification.style.display = 'block';
-        setTimeout(() => { notification.style.display = 'none'; }, 3000);
-    }
+    .then(response => {
+        if (!response.ok) {
+            if (response.status === 401) {
+                // Пользователь не авторизован
+                showAddToCartNotification('Для оформления заказа необходимо авторизоваться');
+                setTimeout(() => {
+                    window.location.href = '/login';
+                }, 3000);
+                throw new Error('Необходима авторизация');
+            }
+            return response.json().then(err => Promise.reject(err));
+        }
+        return response.json();
+    })
+    .then(result => {
+        if (result.status === 'success') {
+            showAddToCartNotification('Заказ успешно оформлен! Письмо отправлено на вашу почту.');
+            // Очищаем корзину только после успешного ответа
+            cart = [];
+            updateCartUI();
+            toggleModal(cartModal, false);
+        } else {
+            showAddToCartNotification(result.message || 'Произошла ошибка при оформлении заказа');
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка при отправке данных:', error);
+        if (error.message !== 'Необходима авторизация') {
+            showAddToCartNotification('Произошла ошибка при оформлении заказа');
+        }
+    });
 }
 
 // фрагмент с обработчиком смены каталога
@@ -200,3 +223,48 @@ document.getElementById('toggleButton').addEventListener('click', function () {
         currentSection = 1;
     }
 });
+
+// Функция для отображения уведомления при добавлении в корзину
+function showAddToCartNotification(message) {
+    // Удаляем существующее уведомление, если оно есть
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        document.body.removeChild(existingNotification);
+    }
+    
+    // Создаем новое уведомление
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.innerHTML = `
+        <span class="notification-icon">✓</span>
+        <span>${message}</span>
+        <button class="notification-close">&times;</button>
+    `;
+    
+    // Добавляем уведомление в DOM
+    document.body.appendChild(notification);
+    
+    // Показываем уведомление с небольшой задержкой для анимации
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    // Обработчик для кнопки закрытия
+    const closeButton = notification.querySelector('.notification-close');
+    closeButton.addEventListener('click', () => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    });
+    
+    // Автоматически скрываем уведомление через 5 секунд
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
+    }, 5000);
+}
